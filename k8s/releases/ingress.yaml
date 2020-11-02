@@ -1,0 +1,36 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: infrastructure
+  annotations:
+    fluxcd.io/automated: "true"
+    repository.fluxcd.io/nginx-ingress: controller.image.repository
+    tag.fluxcd.io/nginx-ingress: controller.image.tag
+    repository.fluxcd.io/defaultbackend: defaultBackend.image.repository
+    tag.fluxcd.io/defaultbackend: defaultBackend.image.tag
+#    filter.fluxcd.io/chart-image: semver:~0.
+spec:
+  releaseName: nginx-ingress
+  # targetNamespace: infrastructure
+  chart:
+    git: ssh://git@github.com:kubernetes/ingress-nginx.git
+    ref: master
+    path: charts/ingress-nginx
+  values:
+    controller:
+      resources:
+        limits:
+          cpu: 200m
+          memory: 180Mi
+      autoscaling:
+        enabled: true
+        maxReplicas: 3
+      service:
+        internal:
+          enabled: true
+          annotations:
+            cloud.google.com/load-balancer-type: "Internal"
+    defaultBackend:
+      enabled: true
