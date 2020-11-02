@@ -45,6 +45,8 @@ Enable Google APIs:
 - `gcloud services enable cloudresourcemanager.googleapis.com`
 - `gcloud services enable container.googleapis.com`
 
+### **IMPORTANT** Update **`resources.tf`** and **`var.tf`** according to your needs
+
 Prepare infra with terraform:
 
 ```shell
