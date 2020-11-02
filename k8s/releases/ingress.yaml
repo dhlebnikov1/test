@@ -15,7 +15,7 @@ spec:
   releaseName: nginx-ingress
   # targetNamespace: infrastructure
   chart:
-    git: ssh://git@github.com:kubernetes/ingress-nginx.git
+    git: https://github.com/kubernetes/ingress-nginx.git
     ref: master
     path: charts/ingress-nginx
   values:
