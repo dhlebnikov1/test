@@ -33,7 +33,7 @@ gsutil mb -p <project_name> -c regional -l <location> gs://<bucket_name>/
 this is need to store tfstate in bucket and share it with teammembers, if you dont whant this feature pls edit `infra/main.tf` and comment following lines:
 
 ```shell
-    bucket      = "admin-ops-storage"
+    bucket      = "tf-ops-bucket"
     prefix      = "tf/state"
     credentials = "./credentials.json"
 ```
