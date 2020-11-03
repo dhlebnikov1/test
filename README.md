@@ -50,6 +50,7 @@ Enable Google APIs:
 Prepare infra with terraform:
 
 ```shell
+terraform init
 terraform plan
 terraform apply
 ```
